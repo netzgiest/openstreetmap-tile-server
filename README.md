@@ -43,7 +43,7 @@ Run the server like this:
 ```
 docker run \
     -p 80:80 \
-    -v openstreetmap-data:/var/lib/postgresql/12/main \
+    -v openstreetmap-data:/var/lib/postgresql/9.6/main \
     -d overv/openstreetmap-tile-server \
     run
 ```
@@ -58,7 +58,7 @@ Tiles that have already been rendered will be stored in `/var/lib/mod_tile`. To 
 docker volume create openstreetmap-rendered-tiles
 docker run \
     -p 80:80 \
-    -v openstreetmap-data:/var/lib/postgresql/12/main \
+    -v openstreetmap-data:/var/lib/postgresql/9.6/main \
     -v openstreetmap-rendered-tiles:/var/lib/mod_tile \
     -d overv/openstreetmap-tile-server \
     run
@@ -74,7 +74,7 @@ Given that you've set up your import as described in the *Automatic updates* sec
 docker run \
     -p 80:80 \
     -e UPDATES=enabled \
-    -v openstreetmap-data:/var/lib/postgresql/12/main \
+    -v openstreetmap-data:/var/lib/postgresql/9.6/main \
     -v openstreetmap-rendered-tiles:/var/lib/mod_tile \
     -d overv/openstreetmap-tile-server \
     run
@@ -89,7 +89,7 @@ To enable the `Access-Control-Allow-Origin` header to be able to retrieve tiles 
 ```
 docker run \
     -p 80:80 \
-    -v openstreetmap-data:/var/lib/postgresql/12/main \
+    -v openstreetmap-data:/var/lib/postgresql/9.6/main \
     -e ALLOW_CORS=1 \
     -d overv/openstreetmap-tile-server \
     run
@@ -103,7 +103,7 @@ To connect to the PostgreSQL database inside the container, make sure to expose 
 docker run \
     -p 80:80 \
     -p 5432:5432 \
-    -v openstreetmap-data:/var/lib/postgresql/12/main \
+    -v openstreetmap-data:/var/lib/postgresql/9.6/main \
     -d overv/openstreetmap-tile-server \
     run
 ```
@@ -121,7 +121,7 @@ docker run \
     -p 80:80 \
     -p 5432:5432 \
     -e PGPASSWORD=secret \
-    -v openstreetmap-data:/var/lib/postgresql/12/main \
+    -v openstreetmap-data:/var/lib/postgresql/9.6/main \
     -d overv/openstreetmap-tile-server \
     run
 ```
@@ -137,7 +137,7 @@ The import and tile serving processes use 4 threads by default, but this number 
 docker run \
     -p 80:80 \
     -e THREADS=24 \
-    -v openstreetmap-data:/var/lib/postgresql/12/main \
+    -v openstreetmap-data:/var/lib/postgresql/9.6/main \
     -d overv/openstreetmap-tile-server \
     run
 ```
